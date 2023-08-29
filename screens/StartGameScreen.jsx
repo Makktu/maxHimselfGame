@@ -2,6 +2,8 @@ import { StyleSheet, View, TextInput, Alert } from 'react-native';
 import React, { useState } from 'react';
 import PrimaryButton from '../components/PrimaryButton';
 import randomNumberPicker from '../helpers/randomNumberPicker';
+import Title from '../components/Title';
+import COLORS from '../helpers/COLORS';
 
 export default function StartGameScreen({ numberGiven }) {
   const [enteredNumber, setEnteredNumber] = useState('');
@@ -33,19 +35,25 @@ export default function StartGameScreen({ numberGiven }) {
   }
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.numberInputStyle}
-        maxLength={2}
-        keyboardType='number-pad'
-        autoCapitalize='none'
-        autoCorrect={false}
-        value={enteredNumber}
-        onChangeText={enteredNumberHandler}
-      />
-      <View style={styles.buttonsContainer}>
-        <PrimaryButton whenPressed={resetInputHandler}>Reset</PrimaryButton>
-        <PrimaryButton whenPressed={confirmInputHandler}>Confirm</PrimaryButton>
+    <View style={styles.overallContainer}>
+      <Title titleText='Choose Your Number' />
+
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.numberInputStyle}
+          maxLength={2}
+          keyboardType='number-pad'
+          autoCapitalize='none'
+          autoCorrect={false}
+          value={enteredNumber}
+          onChangeText={enteredNumberHandler}
+        />
+        <View style={styles.buttonsContainer}>
+          <PrimaryButton whenPressed={resetInputHandler}>Reset</PrimaryButton>
+          <PrimaryButton whenPressed={confirmInputHandler}>
+            Confirm
+          </PrimaryButton>
+        </View>
       </View>
     </View>
   );
@@ -69,11 +77,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   inputContainer: {
-    marginHorizontal: 24,
-    marginTop: 100,
+    marginHorizontal: 12,
+    marginTop: 24,
     padding: 16,
-    backgroundColor: '#3f0723',
-    borderRadius: 8,
+    backgroundColor: COLORS.primary800,
+    borderRadius: 4,
     elevation: 4,
     shadowColor: 'black',
     shadowOffset: {
@@ -86,5 +94,8 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: 'row',
+  },
+  overallContainer: {
+    padding: 12,
   },
 });
