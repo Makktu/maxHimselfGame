@@ -1,15 +1,25 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import Title from '../components/Title';
 
 export default function GameScreen({ chosenNumber = null }) {
-  console.log(chosenNumber);
+  console.log('To GameScreen with>>>', chosenNumber);
   return (
-    <View>
-      <Text style={{ fontSize: 30, margin: 70, color: 'orange' }}>
-        GameScreen
-      </Text>
+    <View style={styles.screenView}>
+      <Title titleText='Computer Guess' />
+      <Text>GUESS</Text>
+      <View>
+        <Text>Higher or Lower?</Text>
+      </View>
+      <Text>+ -</Text>
+      <Text>LOG ROUNDS</Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  screenView: {
+    flex: 1,
+    padding: 22,
+  },
+});

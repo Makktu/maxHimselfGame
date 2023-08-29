@@ -6,9 +6,6 @@ import randomNumberPicker from '../helpers/randomNumberPicker';
 export default function StartGameScreen({ numberGiven }) {
   const [enteredNumber, setEnteredNumber] = useState('');
 
-  let warnings = 0;
-  let warningText = 'OK';
-
   function enteredNumberHandler(enteredText) {
     if (enteredNumber.length < 2) {
       setEnteredNumber(enteredText);
@@ -20,15 +17,13 @@ export default function StartGameScreen({ numberGiven }) {
     if (!chosenNumber || chosenNumber <= 0 || chosenNumber > 99) {
       Alert.alert('Invalid number!', 'Only enter a number between 0 and 99.', [
         {
-          text: warningText,
+          text: 'OK',
           style: 'cancel',
           onPress: resetInputHandler,
         },
       ]);
-      warnings += 1;
       return;
     }
-    console.log(enteredNumber);
     resetInputHandler();
     numberGiven(chosenNumber);
   }
