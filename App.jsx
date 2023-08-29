@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
+import COLORS from './helpers/COLORS';
 
 export default function App() {
   const [userNumber, setUserNumber] = useState(null);
@@ -22,7 +23,7 @@ export default function App() {
     <>
       <StatusBar style='light' />
       <LinearGradient
-        colors={['#3f0723', '#ddb52f']}
+        colors={[COLORS.primary700, COLORS.accent500]}
         style={styles.appContainerStyle}
       >
         <ImageBackground
