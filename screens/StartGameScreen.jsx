@@ -1,8 +1,7 @@
 import { StyleSheet, View, TextInput, Alert } from 'react-native';
 import React, { useState } from 'react';
-import PrimaryButton from '../components/PrimaryButton';
-import randomNumberPicker from '../helpers/randomNumberPicker';
-import Title from '../components/Title';
+import PrimaryButton from '../components/ui/PrimaryButton';
+import Title from '../components/ui/Title';
 import COLORS from '../helpers/COLORS';
 
 export default function StartGameScreen({ numberGiven }) {

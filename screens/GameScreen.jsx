@@ -1,13 +1,21 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
-import Title from '../components/Title';
+import React, { useState } from 'react';
+import Title from '../components/ui/Title';
+import NumberContainer from '../components/game/NumberContainer';
+import PrimaryButton from '../components/ui/PrimaryButton';
+import randomNumberPicker from '../helpers/randomNumberPicker';
 
 export default function GameScreen({ chosenNumber = null }) {
-  console.log('To GameScreen with>>>', chosenNumber);
+  const initialGuess = randomNumberPicker(1, 100, chosenNumber);
+  console.log(
+    `Your number: ${chosenNumber}; computer 1st guess: ${initialGuess}`
+  );
+  const [currentGuess, setCurrentGuess] = useState(initialGuess);
   return (
     <View style={styles.screenView}>
       <Title titleText='Computer Guess' />
-      <Text>GUESS</Text>
+      <NumberContainer>{currentGuess}</NumberContainer>
+      <Text>{currentGuess}</Text>
       <View>
         <Text>Higher or Lower?</Text>
       </View>

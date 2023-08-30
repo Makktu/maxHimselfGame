@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 import React from 'react';
-import COLORS from '../helpers/COLORS';
+import COLORS from '../../helpers/COLORS';
 
 export default function PrimaryButton({ children, whenPressed }) {
   return (

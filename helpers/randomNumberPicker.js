@@ -1,3 +1,8 @@
-export default function randomNumberPicker(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+export default function randomNumberPicker(min, max, exclude) {
+  const randNum = Math.floor(Math.random() * (max - min + 1) + min);
+  if (randNum === exclude) {
+    return generateRandomBetween(min, max, exclude);
+  } else {
+    return randNum;
+  }
 }
