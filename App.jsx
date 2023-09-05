@@ -9,18 +9,14 @@ import COLORS from './helpers/COLORS';
 
 export default function App() {
   const [userNumber, setUserNumber] = useState(null);
-  const [gameIsOver, setGameIsOver] = useState(false);
-  const [turnsTaken, setTurnsTaken] = useState(0);
+  const [gameIsOver, setGameIsOver] = useState(true);
 
-  function gameOverHandler(actualTurnsTaken) {
-    setTurnsTaken(actualTurnsTaken);
-    // ✅ turnsTaken value is fine here
+  function gameOverHandler() {
     setGameIsOver(true);
   }
 
   function resetGameHandler() {
     setUserNumber(null);
-    setTurnsTaken(0);
     setGameIsOver(false);
   }
 
@@ -32,21 +28,13 @@ export default function App() {
 
   if (userNumber) {
     activeScreen = (
-      <GameScreen
-        chosenNumber={userNumber}
-        gameOverHandler={gameOverHandler}
-        turnsTaken={turnsTaken}
-      />
+      <GameScreen chosenNumber={userNumber} gameOverHandler={gameOverHandler} />
     );
   }
 
-  if (gameIsOver) {
+  if (gameIsOver && userNumber) {
     activeScreen = (
-      <GameOver
-        chosenNumber={userNumber}
-        turnsTaken={turnsTaken}
-        resetGame={resetGameHandler}
-      />
+      <GameOver chosenNumber={userNumber} resetGame={resetGameHandler} />
     );
   }
 

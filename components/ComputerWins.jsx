@@ -2,15 +2,12 @@ import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import Title from './ui/Title';
 
-export default function ComputerWins({ chosenNumber, turnsTaken }) {
+export default function ComputerWins({ chosenNumber }) {
   return (
     <View style={styles.computerWinsStyle}>
       <Title titleText='Got the Number!' />
       <Text style={styles.computerWinsTextStyle}>
         Your number was {chosenNumber}
-      </Text>
-      <Text style={styles.computerWinsTextStyle}>
-        Computer Guessed in {turnsTaken} turns
       </Text>
     </View>
   );

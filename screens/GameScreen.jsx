@@ -8,11 +8,7 @@ import randomNumberPicker from '../helpers/randomNumberPicker';
 let minBoundary = 1;
 let maxBoundary = 100;
 
-export default function GameScreen({
-  chosenNumber = null,
-  gameOverHandler,
-  turnsTaken,
-}) {
+export default function GameScreen({ chosenNumber = null, gameOverHandler }) {
   const initialGuess = randomNumberPicker(1, 100, chosenNumber);
 
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
@@ -20,11 +16,8 @@ export default function GameScreen({
   const [computerWins, setComputerWins] = useState(false);
 
   useEffect(() => {
-    turnsTaken += 1;
-    console.log(turnsTaken, 'turns');
-
     if (currentGuess == chosenNumber) {
-      gameOverHandler(turnsTaken);
+      gameOverHandler();
     }
   }, [currentGuess, chosenNumber, gameOverHandler]);
 
