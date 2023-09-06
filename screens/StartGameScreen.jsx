@@ -2,6 +2,7 @@ import { StyleSheet, View, TextInput, Alert, Text } from 'react-native';
 import React, { useState } from 'react';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import Title from '../components/ui/Title';
+import InstructionText from '../components/ui/InstructionText';
 import COLORS from '../helpers/COLORS';
 
 export default function StartGameScreen({ numberGiven }) {
@@ -38,9 +39,7 @@ export default function StartGameScreen({ numberGiven }) {
       <Title titleText='Guess Your Number' />
 
       <View style={styles.inputContainer}>
-        <Text style={styles.instructionStyle}>
-          Enter a number between 1 and 99
-        </Text>
+        <InstructionText>Enter a number between 1 and 99</InstructionText>
         <TextInput
           style={styles.numberInputStyle}
           maxLength={2}
@@ -101,9 +100,5 @@ const styles = StyleSheet.create({
     padding: 12,
     marginTop: 30,
     alignItems: 'center',
-  },
-  instructionStyle: {
-    color: COLORS.accent500,
-    fontSize: 18,
   },
 });

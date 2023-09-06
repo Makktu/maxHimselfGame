@@ -1,8 +1,26 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Title from './ui/Title';
+import { Audio } from 'expo-av';
 
 export default function ComputerWins({ chosenNumber }) {
+  const [sound, setSound] = useState();
+
+  async function playSound() {
+    const { sound } = await Audio.Sound.createAsync(
+      require('../assets/sounds/victory.wav')
+    );
+    setSound(sound);
+
+    console.log('Playing Sound');
+    await sound.playAsync();
+  }
+
+  useEffect(() => {
+    // Side Effect
+    playSound();
+  }, []);
+
   return (
     <View style={styles.computerWinsStyle}>
       <Title titleText='Got the Number!' />

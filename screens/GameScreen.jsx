@@ -19,7 +19,7 @@ export default function GameScreen({ chosenNumber = null, gameOverHandler }) {
     if (currentGuess == chosenNumber) {
       gameOverHandler();
     }
-  }, [currentGuess, chosenNumber, gameOverHandler]);
+  }, [currentGuess, gameOverHandler]);
 
   function nextGuessHandler(guessDirection = '') {
     if (guessDirection === 'lower') {
