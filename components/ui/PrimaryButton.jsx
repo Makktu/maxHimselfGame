@@ -1,5 +1,4 @@
 import { Text, View, StyleSheet, Pressable } from 'react-native';
-import React from 'react';
 import COLORS from '../../helpers/COLORS';
 
 export default function PrimaryButton({ children, whenPressed }) {
@@ -26,18 +25,11 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: COLORS.primary500,
-    height: 34,
-    width: 145,
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 6,
-    shadowColor: 'black',
-    shadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    shadowRadius: 6,
-    shadowOpacity: 0.4,
+    elevation: 2,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
   },
   textStyle: {
     color: 'azure',

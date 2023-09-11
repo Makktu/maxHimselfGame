@@ -24,6 +24,7 @@ export default function GameScreen({ chosenNumber = null, gameOverHandler }) {
   }, [currentGuess, gameOverHandler]);
 
   function nextGuessHandler(guessDirection = '') {
+    console.log(guessDirection);
     if (guessDirection === 'lower') {
       if (currentGuess < chosenNumber) {
         Alert.alert('You what?', "If you're cheating, it's weird...");
@@ -56,7 +57,9 @@ export default function GameScreen({ chosenNumber = null, gameOverHandler }) {
           <PrimaryButton whenPressed={nextGuessHandler.bind(this, 'lower')}>
             -
           </PrimaryButton>
-          <PrimaryButton whenPressed={nextGuessHandler}>+</PrimaryButton>
+          <PrimaryButton whenPressed={nextGuessHandler.bind(this, 'higher')}>
+            +
+          </PrimaryButton>
         </View>
       </Card>
     </View>
@@ -66,7 +69,7 @@ export default function GameScreen({ chosenNumber = null, gameOverHandler }) {
 const styles = StyleSheet.create({
   screenView: {
     flex: 1,
-    padding: 22,
+    paddingTop: 44,
   },
   computerWinsStyle: {
     alignItems: 'center',

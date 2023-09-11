@@ -36,7 +36,7 @@ export default function StartGameScreen({ numberGiven }) {
   }
 
   return (
-    <View style={styles.overallContainer}>
+    <View style={styles.screenView}>
       <Title titleText='Guess Your Number' />
       <Card>
         <InstructionText>Enter a number between 1 and 99</InstructionText>
@@ -49,9 +49,11 @@ export default function StartGameScreen({ numberGiven }) {
           value={enteredNumber}
           onChangeText={enteredNumberHandler}
         />
-        <View style={styles.buttonsContainer}>
-          <View style={styles.btnCont}>
+        <View style={styles.buttons}>
+          <View style={styles.buttonsContainer}>
             <PrimaryButton whenPressed={resetInputHandler}>Reset</PrimaryButton>
+          </View>
+          <View style={styles.buttonsContainer}>
             <PrimaryButton whenPressed={confirmInputHandler}>
               Confirm
             </PrimaryButton>
@@ -63,10 +65,10 @@ export default function StartGameScreen({ numberGiven }) {
 }
 
 const styles = StyleSheet.create({
-  resetButtonStyle: {
-    width: 100,
-    height: 50,
-    backgroundColor: 'purple',
+  screenView: {
+    flex: 1,
+    marginTop: 100,
+    alignItems: 'center',
   },
   numberInputStyle: {
     height: 50,
@@ -78,18 +80,11 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     fontWeight: 'bold',
     textAlign: 'center',
-    justifyContent: 'center',
   },
-  buttonsContainer: {
-    flexDirection: 'column',
-    marginTop: 10,
-  },
-  btnCont: {
+  buttons: {
     flexDirection: 'row',
   },
-  overallContainer: {
-    padding: 12,
-    marginTop: 50,
-    alignItems: 'center',
+  buttonsContainer: {
+    flex: 1,
   },
 });
