@@ -4,6 +4,7 @@ import PrimaryButton from '../components/ui/PrimaryButton';
 import Title from '../components/ui/Title';
 import InstructionText from '../components/ui/InstructionText';
 import COLORS from '../helpers/COLORS';
+import Card from '../components/ui/Card';
 
 export default function StartGameScreen({ numberGiven }) {
   const [enteredNumber, setEnteredNumber] = useState('');
@@ -37,8 +38,7 @@ export default function StartGameScreen({ numberGiven }) {
   return (
     <View style={styles.overallContainer}>
       <Title titleText='Guess Your Number' />
-
-      <View style={styles.inputContainer}>
+      <Card>
         <InstructionText>Enter a number between 1 and 99</InstructionText>
         <TextInput
           style={styles.numberInputStyle}
@@ -50,12 +50,14 @@ export default function StartGameScreen({ numberGiven }) {
           onChangeText={enteredNumberHandler}
         />
         <View style={styles.buttonsContainer}>
-          <PrimaryButton whenPressed={resetInputHandler}>Reset</PrimaryButton>
-          <PrimaryButton whenPressed={confirmInputHandler}>
-            Confirm
-          </PrimaryButton>
+          <View style={styles.btnCont}>
+            <PrimaryButton whenPressed={resetInputHandler}>Reset</PrimaryButton>
+            <PrimaryButton whenPressed={confirmInputHandler}>
+              Confirm
+            </PrimaryButton>
+          </View>
         </View>
-      </View>
+      </Card>
     </View>
   );
 }
@@ -76,29 +78,18 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     fontWeight: 'bold',
     textAlign: 'center',
-  },
-  inputContainer: {
-    marginHorizontal: 12,
-    marginTop: 24,
-    padding: 16,
-    backgroundColor: COLORS.primary800,
-    borderRadius: 4,
-    elevation: 4,
-    shadowColor: 'black',
-    shadowOffset: {
-      width: 10,
-      height: 10,
-    },
-    shadowRadius: 6,
-    shadowOpacity: 0.25,
-    alignItems: 'center',
+    justifyContent: 'center',
   },
   buttonsContainer: {
+    flexDirection: 'column',
+    marginTop: 10,
+  },
+  btnCont: {
     flexDirection: 'row',
   },
   overallContainer: {
     padding: 12,
-    marginTop: 30,
+    marginTop: 50,
     alignItems: 'center',
   },
 });

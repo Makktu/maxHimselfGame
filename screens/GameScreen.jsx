@@ -4,6 +4,8 @@ import Title from '../components/ui/Title';
 import NumberContainer from '../components/game/NumberContainer';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import randomNumberPicker from '../helpers/randomNumberPicker';
+import InstructionText from '../components/ui/InstructionText';
+import Card from '../components/ui/Card';
 
 let minBoundary = 1;
 let maxBoundary = 100;
@@ -48,22 +50,15 @@ export default function GameScreen({ chosenNumber = null, gameOverHandler }) {
     <View style={styles.screenView}>
       <Title titleText='Computer Guess' />
       <NumberContainer>{currentGuess}</NumberContainer>
-      <View
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Text style={{ fontSize: 22, color: 'white', margin: 8 }}>
-          Higher or Lower?
-        </Text>
+      <Card>
+        <InstructionText>Higher or Lower?</InstructionText>
         <View style={{ flexDirection: 'row' }}>
           <PrimaryButton whenPressed={nextGuessHandler.bind(this, 'lower')}>
             -
           </PrimaryButton>
           <PrimaryButton whenPressed={nextGuessHandler}>+</PrimaryButton>
         </View>
-      </View>
+      </Card>
     </View>
   );
 }
