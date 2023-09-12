@@ -33,14 +33,13 @@ export default function ComputerWins({ chosenNumber }) {
 
 const styles = StyleSheet.create({
   computerWinsStyle: {
-    marginTop: 100,
-    marginBottom: 100,
+    marginBottom: 60,
     alignItems: 'center',
     justifyContent: 'center',
   },
   computerWinsTextStyle: {
     color: 'whitesmoke',
-    marginTop: 50,
+    marginTop: 30,
     fontSize: 24,
   },
 });

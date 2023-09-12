@@ -29,6 +29,7 @@ export default function App() {
   function resetGameHandler() {
     setUserNumber(null);
     setGameIsOver(false);
+    setTurnsTaken(0);
   }
 
   function gotNumberHandler(pickedNumber) {
@@ -45,7 +46,11 @@ export default function App() {
 
   if (gameIsOver && userNumber) {
     activeScreen = (
-      <GameOver chosenNumber={userNumber} resetGame={resetGameHandler} />
+      <GameOver
+        chosenNumber={userNumber}
+        turnsTaken={turnsTaken}
+        resetGame={resetGameHandler}
+      />
     );
   }
 

@@ -18,6 +18,8 @@ export default function GameScreen({ chosenNumber = null, gameOverHandler }) {
 
   const [computerWins, setComputerWins] = useState(false);
 
+  let turn = 0;
+
   useEffect(() => {
     if (currentGuess == chosenNumber) {
       gameOverHandler();
@@ -25,7 +27,8 @@ export default function GameScreen({ chosenNumber = null, gameOverHandler }) {
   }, [currentGuess, gameOverHandler]);
 
   function nextGuessHandler(guessDirection = '') {
-    console.log(guessDirection);
+    turn += 1;
+    console.log(guessDirection, turn);
     if (guessDirection === 'lower') {
       if (currentGuess < chosenNumber) {
         Alert.alert('You what?', "If you're cheating, it's weird...");
