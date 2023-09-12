@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     color: 'azure',
     fontSize: 20,
     textAlign: 'center',
+    fontFamily: 'open-sans-bold',
   },
   pressedStyle: {
     opacity: 0.75,

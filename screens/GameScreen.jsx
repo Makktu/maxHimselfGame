@@ -6,6 +6,7 @@ import PrimaryButton from '../components/ui/PrimaryButton';
 import randomNumberPicker from '../helpers/randomNumberPicker';
 import InstructionText from '../components/ui/InstructionText';
 import Card from '../components/ui/Card';
+import { AntDesign } from '@expo/vector-icons';
 
 let minBoundary = 1;
 let maxBoundary = 100;
@@ -52,13 +53,15 @@ export default function GameScreen({ chosenNumber = null, gameOverHandler }) {
       <Title titleText='Computer Guess' />
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
-        <InstructionText>Higher or Lower?</InstructionText>
-        <View style={{ flexDirection: 'row' }}>
+        <InstructionText style={styles.InstructionText}>
+          Higher or Lower?
+        </InstructionText>
+        <View style={styles.btnsContainer}>
           <PrimaryButton whenPressed={nextGuessHandler.bind(this, 'lower')}>
-            -
+            <AntDesign name='minuscircle' size={26} color='white' />
           </PrimaryButton>
           <PrimaryButton whenPressed={nextGuessHandler.bind(this, 'higher')}>
-            +
+            <AntDesign name='pluscircle' size={26} color='white' />
           </PrimaryButton>
         </View>
       </Card>
@@ -73,5 +76,12 @@ const styles = StyleSheet.create({
   },
   computerWinsStyle: {
     alignItems: 'center',
+  },
+  btnsContainer: {
+    flexDirection: 'row',
+  },
+  InstructionText: {
+    marginBottom: 8,
+    fontSize: 24,
   },
 });
