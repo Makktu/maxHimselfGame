@@ -12,6 +12,7 @@ import AppLoading from 'expo-app-loading';
 export default function App() {
   const [userNumber, setUserNumber] = useState(null);
   const [gameIsOver, setGameIsOver] = useState(true);
+  const [turn, setTurnsTaken] = useState(0);
 
   const [fontsLoaded] = useFonts({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
@@ -29,7 +30,6 @@ export default function App() {
   function resetGameHandler() {
     setUserNumber(null);
     setGameIsOver(false);
-    setTurnsTaken(0);
   }
 
   function gotNumberHandler(pickedNumber) {
@@ -40,7 +40,12 @@ export default function App() {
 
   if (userNumber) {
     activeScreen = (
-      <GameScreen chosenNumber={userNumber} gameOverHandler={gameOverHandler} />
+      <GameScreen
+        chosenNumber={userNumber}
+        gameOverHandler={gameOverHandler}
+        turn={turn}
+        setTurnsTaken={setTurnsTaken}
+      />
     );
   }
 
@@ -48,8 +53,8 @@ export default function App() {
     activeScreen = (
       <GameOver
         chosenNumber={userNumber}
-        turnsTaken={turnsTaken}
         resetGame={resetGameHandler}
+        turn={turn}
       />
     );
   }

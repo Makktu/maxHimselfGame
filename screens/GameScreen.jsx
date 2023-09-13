@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Alert } from 'react-native';
+import { StyleSheet, Text, View, Alert, FlatList } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import Title from '../components/ui/Title';
 import NumberContainer from '../components/game/NumberContainer';
@@ -11,23 +11,26 @@ import { AntDesign } from '@expo/vector-icons';
 let minBoundary = 1;
 let maxBoundary = 100;
 
-export default function GameScreen({ chosenNumber = null, gameOverHandler }) {
+export default function GameScreen({
+  chosenNumber = null,
+  gameOverHandler,
+  setTurnsTaken,
+  turn,
+}) {
   const initialGuess = randomNumberPicker(1, 100, chosenNumber);
 
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
-
   const [computerWins, setComputerWins] = useState(false);
-
-  let turn = 0;
+  const [guessRounds, setGuessRounds] = useState([initialGuess]);
 
   useEffect(() => {
     if (currentGuess == chosenNumber) {
       gameOverHandler();
     }
-  }, [currentGuess, gameOverHandler]);
+  }, [currentGuess]);
 
   function nextGuessHandler(guessDirection = '') {
-    turn += 1;
+    setTurnsTaken((turn += 1));
     console.log(guessDirection, turn);
     if (guessDirection === 'lower') {
       if (currentGuess < chosenNumber) {
@@ -46,9 +49,10 @@ export default function GameScreen({ chosenNumber = null, gameOverHandler }) {
       minBoundary = currentGuess + 1;
     }
 
-    const newGuess = randomNumberPicker(minBoundary, maxBoundary);
+    const newGuess = randomNumberPicker(minBoundary, maxBoundary, currentGuess);
 
     setCurrentGuess(newGuess);
+    setGuessRounds((prevGuessRounds) => [newGuess, prevGuessRounds]);
   }
 
   return (
@@ -68,6 +72,16 @@ export default function GameScreen({ chosenNumber = null, gameOverHandler }) {
           </PrimaryButton>
         </View>
       </Card>
+      <View>
+        {/* {guessRounds.map((guessRound) => (
+          <Text key={guessRound}>{guessRound}</Text>
+        ))} */}
+        <FlatList
+          data={guessRounds}
+          renderItem={(itemData) => <Text>{itemData.item}</Text>}
+          keyExtractor={(item) => item}
+        />
+      </View>
     </View>
   );
 }

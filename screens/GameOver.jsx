@@ -4,20 +4,19 @@ import ComputerWins from '../components/ComputerWins';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import COLORS from '../helpers/COLORS';
 
-export default function GameOver({ chosenNumber, turnsTaken, resetGame }) {
+export default function GameOver({ chosenNumber, resetGame, turn }) {
   return (
     <View>
       <Image
         style={styles.imageStyle}
         source={require('../assets/images/success.png')}
       />
-      <ComputerWins chosenNumber={chosenNumber} turnsTaken={turnsTaken} />
+      <ComputerWins chosenNumber={chosenNumber} />
       <View>
         <Text style={styles.summaryInfo}>
-          Your phone needed{' '}
-          <Text style={styles.summaryHighlight}>{turnsTaken}</Text> turns to get
-          the number <Text style={styles.summaryHighlight}>{chosenNumber}</Text>
-          .
+          Your phone needed <Text style={styles.summaryHighlight}>{turn}</Text>{' '}
+          turns to get the number
+          <Text style={styles.summaryHighlight}>{chosenNumber}</Text>.
         </Text>
       </View>
       <View style={styles.playAgainBtn}>
