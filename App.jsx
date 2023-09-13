@@ -11,7 +11,7 @@ import AppLoading from 'expo-app-loading';
 
 export default function App() {
   const [userNumber, setUserNumber] = useState(null);
-  const [gameIsOver, setGameIsOver] = useState(true);
+  const [gameIsOver, setGameIsOver] = useState(false);
   const [turn, setTurnsTaken] = useState(0);
 
   const [fontsLoaded] = useFonts({

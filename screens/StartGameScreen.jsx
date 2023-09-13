@@ -39,7 +39,8 @@ export default function StartGameScreen({ numberGiven }) {
     <View style={styles.screenView}>
       <Title titleText='Guess Your Number' />
       <Card>
-        <InstructionText>Enter a number between 1 and 99</InstructionText>
+        <InstructionText>Enter a number</InstructionText>
+        <InstructionText>between 1 and 99</InstructionText>
         <TextInput
           style={styles.numberInputStyle}
           maxLength={2}

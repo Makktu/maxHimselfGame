@@ -6,7 +6,9 @@ import PrimaryButton from '../components/ui/PrimaryButton';
 import randomNumberPicker from '../helpers/randomNumberPicker';
 import InstructionText from '../components/ui/InstructionText';
 import Card from '../components/ui/Card';
+import GuessLogItem from '../components/game/GuessLogItem';
 import { AntDesign } from '@expo/vector-icons';
+import COLORS from '../helpers/COLORS';
 
 let minBoundary = 1;
 let maxBoundary = 100;
@@ -22,6 +24,8 @@ export default function GameScreen({
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
   const [computerWins, setComputerWins] = useState(false);
   const [guessRounds, setGuessRounds] = useState([initialGuess]);
+
+  const guessRoundsListLength = guessRounds.length;
 
   useEffect(() => {
     if (currentGuess == chosenNumber) {
@@ -52,7 +56,7 @@ export default function GameScreen({
     const newGuess = randomNumberPicker(minBoundary, maxBoundary, currentGuess);
 
     setCurrentGuess(newGuess);
-    setGuessRounds((prevGuessRounds) => [newGuess, prevGuessRounds]);
+    setGuessRounds((prevGuessRounds) => [newGuess, ...prevGuessRounds]);
   }
 
   return (
@@ -72,13 +76,15 @@ export default function GameScreen({
           </PrimaryButton>
         </View>
       </Card>
-      <View>
-        {/* {guessRounds.map((guessRound) => (
-          <Text key={guessRound}>{guessRound}</Text>
-        ))} */}
+      <View style={styles.guessesContainer}>
         <FlatList
           data={guessRounds}
-          renderItem={(itemData) => <Text>{itemData.item}</Text>}
+          renderItem={(itemData) => (
+            <GuessLogItem
+              roundNumber={guessRoundsListLength - itemData.index}
+              guess={itemData.item}
+            />
+          )}
           keyExtractor={(item) => item}
         />
       </View>
@@ -100,5 +106,14 @@ const styles = StyleSheet.create({
   InstructionText: {
     marginBottom: 8,
     fontSize: 24,
+  },
+  guessesContainer: {
+    flex: 1,
+    padding: 16,
+  },
+  guessList: {
+    color: COLORS.primary800,
+    fontSize: 24,
+    fontFamily: 'open-sans-bold',
   },
 });

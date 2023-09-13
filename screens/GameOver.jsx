@@ -16,7 +16,7 @@ export default function GameOver({ chosenNumber, resetGame, turn }) {
         <Text style={styles.summaryInfo}>
           Your phone needed <Text style={styles.summaryHighlight}>{turn}</Text>{' '}
           turns to get the number
-          <Text style={styles.summaryHighlight}>{chosenNumber}</Text>.
+          <Text style={styles.summaryHighlight}> {chosenNumber}</Text>
         </Text>
       </View>
       <View style={styles.playAgainBtn}>
