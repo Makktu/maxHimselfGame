@@ -29,6 +29,7 @@ export default function App() {
 
   function resetGameHandler() {
     setUserNumber(null);
+    setTurnsTaken(0);
     setGameIsOver(false);
   }
 

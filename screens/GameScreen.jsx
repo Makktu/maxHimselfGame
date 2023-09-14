@@ -19,10 +19,8 @@ export default function GameScreen({
   setTurnsTaken,
   turn,
 }) {
-  const initialGuess = randomNumberPicker(1, 100, chosenNumber);
-
+  const initialGuess = randomNumberPicker(1, 99, chosenNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
-  const [computerWins, setComputerWins] = useState(false);
   const [guessRounds, setGuessRounds] = useState([initialGuess]);
 
   const guessRoundsListLength = guessRounds.length;
@@ -35,7 +33,6 @@ export default function GameScreen({
 
   function nextGuessHandler(guessDirection = '') {
     setTurnsTaken((turn += 1));
-    console.log(guessDirection, turn);
     if (guessDirection === 'lower') {
       if (currentGuess < chosenNumber) {
         Alert.alert('You what?', "If you're cheating, it's weird...");
